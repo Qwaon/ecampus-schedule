@@ -30,7 +30,6 @@ function calcProgress(timeBegin, timeEnd) {
 export default function LessonCard({ lesson, isNow = false, isNext = false, isPast = false }) {
   const badge = lesson.lesson_type ? TYPE_LABEL[lesson.lesson_type] : null
   const progress = isNow ? calcProgress(lesson.time_begin, lesson.time_end) : 0
-  const teacherAndSubgroup = [lesson.teacher, lesson.subgroup].filter(Boolean).join(' ')
 
   const cardClass = [
     'lesson-card',
@@ -63,7 +62,7 @@ export default function LessonCard({ lesson, isNow = false, isNext = false, isPa
         {lesson.teacher && (
           <div className="lesson-teacher">
             <PersonIcon />
-            <span>{teacherAndSubgroup}</span>
+            <span>{lesson.teacher}</span>
           </div>
         )}
 

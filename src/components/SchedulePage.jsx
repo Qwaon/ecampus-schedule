@@ -59,7 +59,6 @@ export default function SchedulePage({ weeks }) {
           onClick={() => changeWeek(currentWeekIdx - weekIdx)}
         >
           {isCurrentWeek ? 'Эта неделя' : formatWeekRange(week)}
-          {week?.week_number ? ` · ${week.week_number === 1 ? 'нечёт.' : 'чёт.'}` : ''}
         </button>
         <button
           className="week-nav-btn"

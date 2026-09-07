@@ -107,7 +107,6 @@ export default function HomePage({ weeks }) {
         <span className="home-day-name">{day.weekday}</span>
         <span className="home-date-str">
           {today.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })}
-          {week?.week_number ? ` · ${week.week_number === 1 ? 'нечётная' : 'чётная'} неделя` : ''}
         </span>
       </div>
 

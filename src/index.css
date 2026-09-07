@@ -21,6 +21,10 @@
   --system-green:  #34c759;
   --system-green-10: rgba(52, 199, 89, 0.10);
   --system-red:    #ff3b30;
+  --system-red-10: rgba(255, 59, 48, 0.10);
+  --system-yellow: #ffcc00;
+  --system-yellow-15: rgba(178, 137, 0, 0.14);
+  --system-yellow-ink: #8a6d00;
 
   --system-gray6: #f2f2f7;
 
@@ -53,6 +57,10 @@
   --system-green:  #30d158;
   --system-green-10: rgba(48, 209, 88, 0.15);
   --system-red:    #ff453a;
+  --system-red-10: rgba(255, 69, 58, 0.15);
+  --system-yellow: #ffd60a;
+  --system-yellow-15: rgba(255, 214, 10, 0.16);
+  --system-yellow-ink: #ffd60a;
 
   --system-gray6: #1c1c1e;
 }
@@ -653,6 +661,9 @@ button:active {
 
 .badge--lecture  { color: var(--system-blue);  background: var(--system-blue-10); }
 .badge--practice { color: var(--system-green); background: var(--system-green-10); }
+.badge--exam     { color: var(--system-red);   background: var(--system-red-10); }
+.badge--credit   { color: var(--system-green); background: var(--system-green-10); }
+.badge--diff-credit { color: var(--system-yellow-ink); background: var(--system-yellow-15); }
 
 /* ── Progress bar ───────────────────────────────────────── */
 .lesson-progress {
@@ -729,4 +740,47 @@ button:active {
 
 .term-block .lessons-list {
   margin-top: 8px;
+}
+
+/* ── Past sessions (native <details> spoiler) ──────────────── */
+.past-sessions {
+  margin-top: 4px;
+}
+
+.past-sessions-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: var(--r-md);
+  background: var(--secondary-system-grouped-background);
+  font-size: 0.9375rem; /* 15pt Subheadline */
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--system-blue);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.past-sessions-summary::-webkit-details-marker {
+  display: none;
+}
+
+.past-sessions-summary::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+}
+
+.past-sessions[open] .past-sessions-summary::after {
+  transform: rotate(45deg);
+}
+
+.past-sessions-body {
+  margin-top: 12px;
 }
