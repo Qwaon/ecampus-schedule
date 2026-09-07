@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#007aff"/>
+
+  <!-- Calendar, minimal single-weight line -->
+  <g fill="none" stroke="white" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="96" y="128" width="320" height="272" rx="32"/>
+    <path d="M96 208h320"/>
+    <path d="M176 96v64M336 96v64"/>
+  </g>
+
+  <!-- checkmark -->
+  <path d="M188 288l48 48 88-96" fill="none" stroke="white" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
