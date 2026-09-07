@@ -125,7 +125,7 @@ button:active {
 .main {
   flex: 1;
   padding: 0 16px;
-  padding-bottom: calc(72px + var(--safe-bottom) + 16px);
+  padding-bottom: calc(85px + var(--safe-bottom) + 16px);
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
@@ -229,12 +229,12 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 6px 0 2px;
-  min-height: 49px;
+  gap: 5px;
+  padding: 10px 0 6px;
+  min-height: 62px;
   color: var(--label-secondary);
-  font-size: 0.6875rem; /* 11pt Caption 1 */
-  line-height: 13px;
+  font-size: 0.75rem; /* 12pt */
+  line-height: 15px;
   font-weight: 500;
   transition: color 0.15s ease;
 }
