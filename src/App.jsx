@@ -5,21 +5,47 @@ import HomePage from './components/HomePage'
 import SchedulePage from './components/SchedulePage'
 import SessionsPage from './components/SessionsPage'
 import { useSchedule } from './hooks/useSchedule'
+import { useLessonNotifications } from './hooks/useLessonNotifications'
+
+const NOTIFICATIONS_KEY = 'notificationsEnabled'
 
 export default function App() {
   const [page, setPage] = useState('home')
-  const [darkMode, setDarkMode] = useState(() =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  )
   const { data, error } = useSchedule()
 
+  const [notificationsOn, setNotificationsOn] = useState(() => {
+    return (
+      typeof Notification !== 'undefined' &&
+      Notification.permission === 'granted' &&
+      localStorage.getItem(NOTIFICATIONS_KEY) === '1'
+    )
+  })
+
+  useLessonNotifications(data?.weeks, notificationsOn)
+
+  async function toggleNotifications() {
+    if (typeof Notification === 'undefined') return
+
+    if (notificationsOn) {
+      setNotificationsOn(false)
+      localStorage.setItem(NOTIFICATIONS_KEY, '0')
+      return
+    }
+
+    const permission = await Notification.requestPermission()
+    if (permission === 'granted') {
+      setNotificationsOn(true)
+      localStorage.setItem(NOTIFICATIONS_KEY, '1')
+    }
+  }
+
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light')
-  }, [darkMode])
+    document.documentElement.removeAttribute('data-theme')
+  }, [])
 
   return (
     <div className="app">
-      <Header darkMode={darkMode} onToggleDark={() => setDarkMode((d) => !d)} />
+      <Header notificationsOn={notificationsOn} onToggleNotifications={toggleNotifications} />
 
       <main className="main">
         {error && (

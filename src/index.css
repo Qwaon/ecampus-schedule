@@ -1,5 +1,6 @@
 /* ── Semantic color tokens (Apple HIG) ─────────────────────
-   Light values by default; dark overrides in [data-theme='dark'].
+   Light values by default; dark overrides follow the system theme
+   via prefers-color-scheme — no in-app toggle.
    No blur, no translucency, no drop shadows — flat material only.
 */
 :root {
@@ -38,31 +39,33 @@
   --r-pill: 999px;
 }
 
-[data-theme='dark'] {
-  --system-background:            #000000;
-  --secondary-system-background:  #1c1c1e;
-  --tertiary-system-background:   #2c2c2e;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --system-background:            #000000;
+    --secondary-system-background:  #1c1c1e;
+    --tertiary-system-background:   #2c2c2e;
 
-  --system-grouped-background:            #000000;
-  --secondary-system-grouped-background:  #1c1c1e;
+    --system-grouped-background:            #000000;
+    --secondary-system-grouped-background:  #1c1c1e;
 
-  --label:            #ffffff;
-  --label-secondary:  rgba(235, 235, 245, 0.60);
-  --label-tertiary:   rgba(235, 235, 245, 0.30);
+    --label:            #ffffff;
+    --label-secondary:  rgba(235, 235, 245, 0.60);
+    --label-tertiary:   rgba(235, 235, 245, 0.30);
 
-  --separator: rgba(84, 84, 88, 0.65);
+    --separator: rgba(84, 84, 88, 0.65);
 
-  --system-blue:   #0a84ff;
-  --system-blue-10: rgba(10, 132, 255, 0.15);
-  --system-green:  #30d158;
-  --system-green-10: rgba(48, 209, 88, 0.15);
-  --system-red:    #ff453a;
-  --system-red-10: rgba(255, 69, 58, 0.15);
-  --system-yellow: #ffd60a;
-  --system-yellow-15: rgba(255, 214, 10, 0.16);
-  --system-yellow-ink: #ffd60a;
+    --system-blue:   #0a84ff;
+    --system-blue-10: rgba(10, 132, 255, 0.15);
+    --system-green:  #30d158;
+    --system-green-10: rgba(48, 209, 88, 0.15);
+    --system-red:    #ff453a;
+    --system-red-10: rgba(255, 69, 58, 0.15);
+    --system-yellow: #ffd60a;
+    --system-yellow-15: rgba(255, 214, 10, 0.16);
+    --system-yellow-ink: #ffd60a;
 
-  --system-gray6: #1c1c1e;
+    --system-gray6: #1c1c1e;
+  }
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
